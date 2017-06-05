@@ -14,9 +14,15 @@ Tile::Tile(int _posX, int _posY, int _tipo)
 	territorio = NULL;
 }
 
+<<<<<<< HEAD
 void Tile::show(bool mostrarFillRects = true)
 {
 	if(mostrarFillRects)
+=======
+void Tile::show()
+{
+	if(territorio != NULL)
+>>>>>>> 2bab34b0cc9c057aec7012183bb566d831248501
 	{
 		SDL_Rect rectTile;
 
@@ -25,6 +31,7 @@ void Tile::show(bool mostrarFillRects = true)
 		rectTile.w = 30;
 		rectTile.h = 30;
 
+<<<<<<< HEAD
 		SDL_FillRect(screen, &rectTile, cores[tipo]);
 	}
 
@@ -37,6 +44,12 @@ void Tile::show(bool mostrarFillRects = true)
 	{
 		(*drawObj).apply_surface( posX*30, posY*30, transparentSurface, screen, NULL);
 	}	
+=======
+
+		SDL_FillRect(screen, &rectTile, (*(*territorio).nacao).cor);
+
+	}
+>>>>>>> 2bab34b0cc9c057aec7012183bb566d831248501
 }
 
 void Tile::showCapital()

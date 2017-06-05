@@ -17,8 +17,11 @@ class Draw
 		void drawRect(SDL_Surface *, float, float, float, float, Uint32);
 		void drawCircle(SDL_Surface *, int, int, int, Uint32, bool);
 		int apply_surface(int, int, SDL_Surface*, SDL_Surface*, SDL_Rect*);
+<<<<<<< HEAD
 		SDL_Surface* CreateSurface(Uint32,int,int,const SDL_Surface*);
 		SDL_Surface* MyFillRect(int, int,const SDL_Surface*, Uint8);
+=======
+>>>>>>> 2bab34b0cc9c057aec7012183bb566d831248501
 };
 
 #endif

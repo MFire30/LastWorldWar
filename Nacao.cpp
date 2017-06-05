@@ -1,14 +1,22 @@
 #include "Nacao.h"
+<<<<<<< HEAD
 #include "Tile.h"
 #include "Unidade.h" 
 #include "ClasseUnidade.h" 
 #include "Territorio.h"
+=======
+>>>>>>> 2bab34b0cc9c057aec7012183bb566d831248501
 
 #define AVIAO 0
 #define NAVIO 1
 #define SOLDADO 2
 #define CANHAO 3
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 2bab34b0cc9c057aec7012183bb566d831248501
 Nacao::Nacao(int _petroleo, int _madeira, int _ouro, int _ferro, string _nome, Uint32 _cor)
 {
 	petroleo = _petroleo;
@@ -23,6 +31,12 @@ Nacao::Nacao(int _petroleo, int _madeira, int _ouro, int _ferro, string _nome, U
 	qtdNacao[1] = 0;
 	qtdNacao[2] = 0;
 	qtdNacao[3] = 0;
+<<<<<<< HEAD
+=======
+
+	energia = 10;
+
+>>>>>>> 2bab34b0cc9c057aec7012183bb566d831248501
 }
 
 void Nacao::contarExercito()
@@ -32,6 +46,7 @@ void Nacao::contarExercito()
 	for(i=0;i<4;i++)
 		qtdNacao[i] = 0;	
 	
+<<<<<<< HEAD
 	for(list<Unidade *>::iterator it = exercito.begin(); it != exercito.end(); it++)
 	{
 		if ((*(*it)).isDead)
@@ -77,6 +92,105 @@ void Nacao::exercitoAdd(ClasseUnidade* classeUnidade, Territorio* territorio, in
 		ferro -= (*classeUnidade).custoFerro;
 		ouro -= (*classeUnidade).custoOuro;
 		madeira -= (*classeUnidade).custoMadeira;		
+=======
+	for(list<Unidade *>::iterator it1 = exercito.begin(); it1 != exercito.end(); it1++)
+	{
+		if ((*(*it1)).isDead)
+			continue;
+
+		switch ((*(*it1)).tipo)
+		{
+			case SOLDADO: 
+					qtdNacao[SOLDADO]++;   
+			break;
+
+			case NAVIO: 
+					qtdNacao[NAVIO]++;   
+			break;
+
+			case CANHAO: 
+					qtdNacao[CANHAO]++;   
+			break;
+	
+			case AVIAO: 
+					qtdNacao[AVIAO]++;   
+			break;
+
+		}
+				
+	}
+
+}
+
+
+void Nacao::exercitoAdd(Unidade* unidade)
+{
+
+	if( (*unidade).tipo == AVIAO)
+	{
+		if(petroleo < 100 || ferro < 100 || ouro < 100 || madeira < 100) 
+		{
+			printf("Não há recursos o suficiente para criacao do AVIAO");		
+		}
+			else 
+			{
+				petroleo -= 100;
+				ferro -= 100;
+				ouro -= 100;
+				madeira -= 100;
+		
+				exercito.push_back(unidade);
+			}
+
+	}
+
+	if( (*unidade).tipo == NAVIO)
+	{
+		if(petroleo < 100 || ferro < 100 || ouro < 50 || madeira < 100) 
+		{
+			printf("Não há recursos o suficiente para criacao do NAVIO");		
+		}
+			else 
+			{
+				petroleo -= 100;
+				ferro -= 100;
+				ouro -= 50;
+				madeira -= 100;
+		
+				exercito.push_back(unidade);
+			}	
+	}	
+
+	if( (*unidade).tipo == SOLDADO)
+	{
+			if(ferro < 50 || ouro < 50) 
+		{
+			printf("Não há recursos o suficiente para criacao do SOLDADO");		
+		}
+			else 
+			{
+				ouro -= 50;
+				ferro -= 50;
+	
+				exercito.push_back(unidade);
+			}		
+	}	
+
+	if( (*unidade).tipo == CANHAO)
+	{
+		if(ferro < 200 || madeira < 100 || ouro < 50 ) 
+		{
+			printf("Não há recursos o suficiente para criacao do CANHAO");		
+		}
+			else 
+			{
+				ferro -= 100;
+				madeira -= 100;						
+				ouro -= 50;	
+
+				exercito.push_back(unidade);
+			}	
+>>>>>>> 2bab34b0cc9c057aec7012183bb566d831248501
 	}
 	
 	contarExercito();
@@ -98,9 +212,18 @@ void Nacao::carregaScore()
 	
 	sprintf(scoreTerritoriosNacao,"Quantidade de Territorios: %d", Nacao::contarTerritorios());
 
+<<<<<<< HEAD
 	messageRecursos = TTF_RenderText_Solid( (*fontHandler).font, scoreRecursosNacao,textColor );
 	messageUnidades = TTF_RenderText_Solid( (*fontHandler).font, scoreUnidadesNacao,textColor );
 	messageTerritorios = TTF_RenderText_Solid( (*fontHandler).font, scoreTerritoriosNacao,textColor );
+=======
+	sprintf(qtdEnergia, "Energia: %d", energia);
+
+	messageRecursos = TTF_RenderText_Solid( (*fontHandler).font, scoreRecursosNacao,textColor );
+	messageUnidades = TTF_RenderText_Solid( (*fontHandler).font, scoreUnidadesNacao,textColor );
+	messageTerritorios = TTF_RenderText_Solid( (*fontHandler).font, scoreTerritoriosNacao,textColor );
+	messageEnergia = TTF_RenderText_Solid( (*fontHandler).font, qtdEnergia,textColor );
+>>>>>>> 2bab34b0cc9c057aec7012183bb566d831248501
 }
 
 
@@ -119,6 +242,7 @@ void Nacao::coletar()
 		(*(*it)).coletar();
 	}
 }
+<<<<<<< HEAD
 
 void Nacao::finalize()
 {
@@ -140,3 +264,5 @@ void Nacao::atualizaQuadroExercito()
 	}
 }
 
+=======
+>>>>>>> 2bab34b0cc9c057aec7012183bb566d831248501

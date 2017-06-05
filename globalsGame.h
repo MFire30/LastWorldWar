@@ -3,10 +3,14 @@
 
 #include "SDL/SDL.h"
 #include "Cenario.h"
+<<<<<<< HEAD
 #include "ClasseUnidade.h"
 #include "Unidade.h"
 #include "Territorio.h"
 #include "Tile.h"
+=======
+#include "Unidade.h"
+>>>>>>> 2bab34b0cc9c057aec7012183bb566d831248501
 
 #define LINHAS_MAPA 24
 #define COLUNAS_MAPA 33
@@ -69,6 +73,7 @@ extern int scenarioAtual;
 
 extern Uint32 cores[];		//correspondendo as cores definidas no enum
 
+<<<<<<< HEAD
 extern SDL_Surface* transparentSurface;
 
 extern int modo;
@@ -81,6 +86,11 @@ extern ClasseUnidade* soldado;
 extern ClasseUnidade* canhao;
 extern ClasseUnidade* navio;
 extern ClasseUnidade* aviao;
+=======
+extern int modo;
+extern int contadorMovimentosSoldado;
+extern int contadorMovimentosNavio;
+>>>>>>> 2bab34b0cc9c057aec7012183bb566d831248501
 
 //The surfaces that will be used
 extern SDL_Surface *logoEmpresa;
@@ -102,7 +112,11 @@ extern SDL_Surface *messageRecursos;
 extern SDL_Surface *messageUnidades;
 extern SDL_Surface *messageTerritorios;
 extern SDL_Surface *messageGameOver;
+<<<<<<< HEAD
 extern SDL_Surface *messageGeneralInfo;
+=======
+extern SDL_Surface *messageEnergia;
+>>>>>>> 2bab34b0cc9c057aec7012183bb566d831248501
 
 extern SDL_Surface *opcaoJogar;
 extern SDL_Surface *opcaoInstrucoes;
@@ -127,7 +141,11 @@ extern char scoreRecursosNacao[300];
 extern char scoreUnidadesNacao[300];	
 extern char scoreTerritoriosNacao[300];	
 extern char scoreGameOver[300];	
+<<<<<<< HEAD
 extern char scoreGeneralInfo[300];
+=======
+extern char qtdEnergia[300];
+>>>>>>> 2bab34b0cc9c057aec7012183bb566d831248501
 
 extern char instrucoes[20];
 extern char jogar[20];
