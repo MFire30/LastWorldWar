@@ -14,14 +14,19 @@ set(LIBRARY_OUTPUT_PATH ${CMAKE_BINARY_DIR})
 
 # Set the libraries - Must have
 find_package(SDL REQUIRED)
-include_directories(${SDL2_INCLUDE_DIR})
-
-# Set compiler flags
-set(CMAKE_CXX_FLAGS "sdl-config --cflags --libs -Wall -W -pedantic -ansi -lSDL -lSDL_image -lSDL_mixer -lSDL_ttf -lSDL_net -std=c++0x -o -g")
+find_package(SDL_image REQUIRED)
+find_package(SDL_mixer REQUIRED)
+find_package(SDL_ttf REQUIRED)
+find_package(SDL_net REQUIRED)
 
 # The following folder will be included
 include_directories("${PROJECT_SOURCE_DIR}")
 
+# Set compiler flags
+set(CMAKE_CXX_FLAGS "${SDL_CFLAGS} -Wall -W -pedantic -ansi -lSDL -lSDL_image -lSDL_mixer -lSDL_ttf -lSDL_net -std=c++0x -o -g")
+
 # Run the executable
 add_executable(LastWorldWar ${SOURCE_FILES})
-target_link_libraries(LastWorldWar ${SDL_LIBRARY})
+
+include_directories(LastWorldWar ${SDL_INCLUDE_DIR} ${SDLIMAGE_INCLUDE_DIR} ${SDLMIXER_INCLUDE_DIR} ${SDLTTF_INCLUDE_DIR} ${SDLNET_INCLUDE_DIR})
+target_link_libraries(LastWorldWar ${SDL_LIBRARY} ${SDLIMAGE_LIBRARY} ${SDLMIXER_LIBRARY} ${SDLTTF_LIBRARY} ${SDLNET_LIBRARY})
