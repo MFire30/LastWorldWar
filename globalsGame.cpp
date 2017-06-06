@@ -2,7 +2,6 @@
 
 int scenarioAtual = TELA_INICIAL;
 Uint32 cores[] = {0x0000FF, 0x9F6F2F, 0x00CC00, 0xFFFF00, 0xFFFFFF, 0xFF0000, 0xC0C0C0, 0x000000};		//correspondendo as cores definidas no enum
-<<<<<<< HEAD
 SDL_Surface* transparentSurface = NULL;
 int modo = MODO_NORMAL;
 
@@ -14,12 +13,6 @@ ClasseUnidade* soldado = NULL;
 ClasseUnidade* canhao = NULL;
 ClasseUnidade* navio = NULL;
 ClasseUnidade* aviao = NULL;
-=======
-int modo = MODO_NORMAL;
-
-int contadorMovimentosSoldado = 5;
-int contadorMovimentosNavio = 3;
->>>>>>> 2bab34b0cc9c057aec7012183bb566d831248501
 
 //The surfaces that will be used
 SDL_Surface *logoEmpresa = NULL;
@@ -40,12 +33,8 @@ SDL_Surface *messageRecursos = NULL;
 SDL_Surface *messageUnidades = NULL;
 SDL_Surface *messageTerritorios = NULL;
 SDL_Surface *messageGameOver = NULL;
-<<<<<<< HEAD
 SDL_Surface *messageGeneralInfo = NULL;
 
-=======
-SDL_Surface *messageEnergia = NULL;
->>>>>>> 2bab34b0cc9c057aec7012183bb566d831248501
 SDL_Surface *opcaoJogar = NULL;
 SDL_Surface *opcaoInstrucoes = NULL;
 SDL_Surface *opcaoOpcoes = NULL;
@@ -69,13 +58,8 @@ SDL_Surface *textoSoundE = NULL;
 char scoreRecursosNacao[300];
 char scoreUnidadesNacao[300];	
 char scoreTerritoriosNacao[300];
-<<<<<<< HEAD
 char scoreGameOver[300];	
 char scoreGeneralInfo[300];
-=======
-char qtdEnergia[300];
-char scoreGameOver[300];	
->>>>>>> 2bab34b0cc9c057aec7012183bb566d831248501
 
 char instrucoes[20];
 char jogar[20];

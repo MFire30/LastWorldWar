@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 #include "ClasseUnidade.h"
-=======
->>>>>>> 2bab34b0cc9c057aec7012183bb566d831248501
 #include "Unidade.h"
 #include "Nacao.h"
 #include "Tile.h"
@@ -14,16 +11,11 @@ enum {
 	CANHAO
 };
 
-<<<<<<< HEAD
 Unidade::Unidade(int _posX, int _posY, ClasseUnidade* _tipo, Nacao* _nacao) 
-=======
-Unidade::Unidade(int _posX, int _posY, int _tipo, int _forca, Nacao* _nacao, int _qtdMovimentos, int _ambiente) 
->>>>>>> 2bab34b0cc9c057aec7012183bb566d831248501
 {
 	posX = _posX;
 	posY = _posY;
 	tipo = _tipo;
-<<<<<<< HEAD
 	nacao = _nacao;
 
 	qtdMovimentos = (*tipo).qtdMovimentos;
@@ -55,37 +47,6 @@ int Unidade::show()
 	if (tipo == aviao)
 	{
 		rect.x = 32*(8+quadroAnimacao)+4;
-=======
-	forca = _forca;
-	isDead = false;
-	nacao = _nacao;
-	selecionado = false;
-	qtdMovimentos = _qtdMovimentos;
-	ambiente = _ambiente;
-}
-int Unidade::show()
-{
-	if(tipo == SOLDADO)
-	{
-		rect.x = 30*0+1;
-		rect.y = 30*0+1;
-	}
-	if (tipo == NAVIO)
-	{
-		rect.x = 30*0;
-		rect.y = 32*4+3;
-	}
-	
-	if (tipo == CANHAO)
-	{
-		rect.x = 33*5;
-		rect.y = 30*1+3;
-	}
-
-	if (tipo == AVIAO)
-	{
-		rect.x = 32*8+4;
->>>>>>> 2bab34b0cc9c057aec7012183bb566d831248501
 		rect.y = 32*4+3;
 	}
 
@@ -129,7 +90,6 @@ int Unidade::attack(Unidade * inimigo)
 		return 1;
 	}	
 
-<<<<<<< HEAD
 	(*audioHandler).playEffect_Enemy();
 
 	//80% da forca mais 20% da forca vezes um numero aleatorio de 1 a 10
@@ -143,22 +103,6 @@ int Unidade::attack(Unidade * inimigo)
 	}
 	else
 	{
-=======
-
-	//80% da forca mais 20% da forca vezes um numero aleatorio de 1 a 10
-	int ataque = 0.8 * forca 			+ 0.2 * forca * (*randomObj).gerarNumero(10);
-	int defesa = 0.8 * (*inimigo).forca + 0.2 * (*inimigo).forca * (*randomObj).gerarNumero(10);
-
-	if(ataque > defesa)
-	{
-		cout << "ATAQUE: Inimigo morreu" << endl;
-		(* inimigo).isDead = true;		
-		(*(* inimigo).nacao).contarExercito();	
-	}
-	else
-	{
-		cout << "ATAQUE: Voce morreu" << endl;
->>>>>>> 2bab34b0cc9c057aec7012183bb566d831248501
 		isDead = true;
 		(*nacao).contarExercito();
 	}
@@ -168,7 +112,6 @@ int Unidade::attack(Unidade * inimigo)
 
 bool Unidade::canMove(Tile* tileDestino)
 {
-<<<<<<< HEAD
 	if( (*tileDestino).ocupante != NULL )
 	{
 //		if((*(*tileDestino).ocupante).tipo == navio)
@@ -188,17 +131,6 @@ bool Unidade::canMove(Tile* tileDestino)
 			unidadeSelecionada = NULL;
 			return true;
 		}
-=======
-/*	cout << ambiente << " " << (*tileDestino).tipo << endl;
-	cout << ((*tileDestino).tipo != OCEANO) << endl;
-	cout << ((*tileDestino).tipo != PETROLEO) << endl;
-	cout << (ambiente == TERRESTRE) << endl;*/
-
-	if( (*tileDestino).ocupante != NULL )
-	{
-		if( nacao != (*(*tileDestino).ocupante).nacao )
-			attack( (*tileDestino).ocupante );
->>>>>>> 2bab34b0cc9c057aec7012183bb566d831248501
 
 		if( (*(*tileDestino).ocupante).isDead )
 			(*tileDestino).ocupante = NULL;
@@ -206,24 +138,14 @@ bool Unidade::canMove(Tile* tileDestino)
 		return false;
 	}
 
-<<<<<<< HEAD
 	if( (*tipo).ambiente == QUALQUER_AMBIENTE )				//qualquer ambiente AVIAO
 		return true;
 	if( (*tipo).ambiente == TERRESTRE )
-=======
-	if( (*tileDestino).tipo == QUALQUER_AMBIENTE )				//qualquer ambiente AVIAO
-		return true;
-	if( ambiente == TERRESTRE )
->>>>>>> 2bab34b0cc9c057aec7012183bb566d831248501
 	{
 		if( (*tileDestino).tipo != OCEANO && (*tileDestino).tipo != PETROLEO )
 			return true;
 	}
-<<<<<<< HEAD
 	if( (*tipo).ambiente == AQUATICO )
-=======
-	if( ambiente == AQUATICO )
->>>>>>> 2bab34b0cc9c057aec7012183bb566d831248501
 	{
 		if( (*tileDestino).tipo == OCEANO || (*tileDestino).tipo == PETROLEO )
 			return true;
@@ -232,7 +154,6 @@ bool Unidade::canMove(Tile* tileDestino)
 	return false;
 }
 
-<<<<<<< HEAD
 void Unidade::atualizaAnimacao()
 {
 	
@@ -243,6 +164,4 @@ void Unidade::finalize()
 	while (!unidadesGuardadas.empty())
 		unidadesGuardadas.pop_front();
 }
-=======
->>>>>>> 2bab34b0cc9c057aec7012183bb566d831248501
 

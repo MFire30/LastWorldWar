@@ -27,7 +27,6 @@ int nivelHost;
 list<Nacao*> nacoes;
 list<Territorio*> territorios;
 
-<<<<<<< HEAD
 //Nacao* nacaoSelecionada = NULL;
 //Nacao* nacaoInimigo = NULL;
 Nacao* turno = NULL;
@@ -42,17 +41,6 @@ int tempo;
 int tempoTurno;
 
 int atualizacaoQuadroAnimacao = 1000/10;	//10 vezes por segundo
-=======
-Nacao* nacaoSelecionada = NULL;
-Nacao* nacaoInimigo = NULL;
-
-Territorio* territorioSelecionado = NULL;
-
-Network* conexaoCliente = new Network();
-Unidade* unidadeSelecionada = NULL;
-Unidade* unidadeAlvo = NULL;
-
->>>>>>> 2bab34b0cc9c057aec7012183bb566d831248501
 
 int sound()
 {
@@ -71,7 +59,6 @@ bool confereGameOver()
 			qtd_totalTerritorios++;
 	}
 
-<<<<<<< HEAD
 	if( nivelHost == 1 && qtd_territorios==qtd_totalTerritorios )		//&& nivel == 1 (nivel onde se deve conquistar todos os territorios por exemplo)
 		return true;
 	else if (nivelHost == 2 && qtd_territorios > qtd_totalTerritorios / 2)
@@ -79,12 +66,6 @@ bool confereGameOver()
 
 	return false;
 
-=======
-	if( qtd_territorios==qtd_totalTerritorios )		//&& nivel == 1 (nivel onde se deve conquistar todos os territorios por exemplo)
-		return true;
-
-	return false;
->>>>>>> 2bab34b0cc9c057aec7012183bb566d831248501
 }
 
 //Funcao Menu
@@ -102,7 +83,6 @@ void selecionarMenu(){
 	
 		//Abrir jogo
 		if( (tileX>=10 && tileX<=19) && (tileY>=10 && tileY<=13) ){
-<<<<<<< HEAD
 			/*(*conexaoCliente).initializeNetwork();
 			if((*conexaoCliente).host){
 				//Colocar mensagem para aguardar conexão do próximo jogador!!!
@@ -113,18 +93,6 @@ void selecionarMenu(){
 				cout << "Conectou como GUEST ----> TELA LOADING" << endl;
 				scenarioAtual=LOADING;	
 			}*/
-=======
-			(*conexaoCliente).initializeNetwork();
-			if((*conexaoCliente).host){
-				//Colocar mensagem para aguardar conexão do próximo jogador!!!
-				cout << "Conectou como host ----> TELA PREPARACAOJOGO" << endl;
-				scenarioAtual=PREPARACAOJOGO;
-				(*audioHandler).playEscolhaNacao();	
-			}else{
-				cout << "Conectou como GUEST ----> TELA LOADING" << endl;
-				scenarioAtual=LOADING;	
-			}
->>>>>>> 2bab34b0cc9c057aec7012183bb566d831248501
 			
 
 		}
@@ -317,7 +285,6 @@ void selecionarOpcoes(){
 		}
 }
 
-<<<<<<< HEAD
 void mudarTurno()
 {
 	territorioSelecionado = NULL;
@@ -345,8 +312,6 @@ void mudarTurno()
 			(*(*it1)).qtdMovimentos = (*(*(*it1)).tipo).qtdMovimentos; 	
 }
 
-=======
->>>>>>> 2bab34b0cc9c057aec7012183bb566d831248501
 //main loop functions
 int initialize()
 {
@@ -407,29 +372,19 @@ int initialize()
   telaLoading = (*ImageHandlerSDLObj).load_image("images/telaLoading.png", 0);
   loading = (*ImageHandlerSDLObj).load_image("images/loadingPiece.png", 0);
 
-<<<<<<< HEAD
 	//quadradoTransparente para sobrepor tiles destacando-os
 	transparentSurface = (*drawObj).MyFillRect( 30, 30, screen, 100);
-=======
->>>>>>> 2bab34b0cc9c057aec7012183bb566d831248501
 	
 	(*audioHandler).initialize();
 	(*fontHandler).initialize();
 
 	(*audioHandler).playMusic();
-<<<<<<< HEAD
 	// (*timer).start();
 
 	soldado = new ClasseUnidade("Soldado", 4, 7, TERRESTRE, 50, 50, 0, 0, 2);
 	canhao = new ClasseUnidade("Canhao", 3, 10, TERRESTRE, 200, 50, 100, 0, 3);
 	navio = new ClasseUnidade("Navio", 6, 13, AQUATICO, 100, 50, 100, 100, 4);
 	aviao = new ClasseUnidade("Aviao", 9, 20, QUALQUER_AMBIENTE, 100, 100, 100, 100, 6);
-=======
-	//depois colocar no quadro 1 (0) da fase 1 apos a abertura no switch
-	// initializeCenario1();
-
-	// (*timer).start();
->>>>>>> 2bab34b0cc9c057aec7012183bb566d831248501
 
 	return 1;	//sucess
 }
@@ -454,10 +409,6 @@ int finalize()
     SDL_FreeSurface( messageRecursos );	
     SDL_FreeSurface( messageUnidades );	
     SDL_FreeSurface( messageTerritorios );
-<<<<<<< HEAD
-=======
-    SDL_FreeSurface( messageEnergia );
->>>>>>> 2bab34b0cc9c057aec7012183bb566d831248501
     SDL_FreeSurface( messageGameOver );
 
 		SDL_FreeSurface( opcaoJogar );	
@@ -481,11 +432,8 @@ int finalize()
     SDL_FreeSurface( opcaoNivel4 );
     SDL_FreeSurface( opcaoNivel5 );
 
-<<<<<<< HEAD
 	SDL_FreeSurface( transparentSurface );
 
-=======
->>>>>>> 2bab34b0cc9c057aec7012183bb566d831248501
 	//cenario
 	if(scenarioAtual==INICIO)
 		finalizeCenario1();
@@ -498,14 +446,11 @@ int finalize()
 	(*audioHandler).finalize();
 	(*fontHandler).finalize();
 
-<<<<<<< HEAD
 	delete(soldado);
 	delete(canhao);
 	delete(navio);
 	delete(aviao);
 
-=======
->>>>>>> 2bab34b0cc9c057aec7012183bb566d831248501
     //Quit SDL
     SDL_Quit();
 
@@ -515,20 +460,12 @@ int finalize()
 void carregarLoading(){
 
 	int recursos = 0;
-<<<<<<< HEAD
 	/*if ((*conexaoCliente).host){
-=======
-	if ((*conexaoCliente).host){
->>>>>>> 2bab34b0cc9c057aec7012183bb566d831248501
 		(*conexaoCliente).enviaJogoInicial(nacaoHost, nivelHost);
 
 	} else{
 		(*conexaoCliente).recebeJogoInicial(nacaoHost, nivelHost);
-<<<<<<< HEAD
 	}*/
-=======
-	}
->>>>>>> 2bab34b0cc9c057aec7012183bb566d831248501
 
 	if(nivelHost == 1){
 		recursos = 3000;
@@ -541,11 +478,7 @@ void carregarLoading(){
 	nacoes.push_back(new Nacao(recursos,recursos,recursos,recursos,"Estados Unidos",0x0000FF));
 	nacoes.push_back(new Nacao(recursos,recursos,recursos,recursos,"Siria",0x00FF00));
 
-<<<<<<< HEAD
 	/*if((*conexaoCliente).host){
-=======
-	if((*conexaoCliente).host){
->>>>>>> 2bab34b0cc9c057aec7012183bb566d831248501
 		if(nacaoHost == 0){
 				// nacaoSelecionada = nacao1;
 				// nacaoInimigo = nacao2;
@@ -566,7 +499,6 @@ void carregarLoading(){
 			meuTurno = true;
 		}
 	}
-<<<<<<< HEAD
 	nacaoInimigo = nacoes.back();*/
 	if(nacaoHost == 0)
 		nacaoSelecionada = nacoes.front();
@@ -574,8 +506,6 @@ void carregarLoading(){
 		nacaoSelecionada = nacoes.back();
 
 	meuTurno = true;
-=======
->>>>>>> 2bab34b0cc9c057aec7012183bb566d831248501
 	
 	int i = 0;
 	int x = 300;
@@ -589,11 +519,7 @@ void carregarLoading(){
 	{
 		//SDL_Delay(400);
 		//CRIAR THREAD PARA RODAR ISSO
-<<<<<<< HEAD
 		//cout << "Valor de i : " << i << endl;
-=======
-		cout << "Valor de i : " << i << endl;
->>>>>>> 2bab34b0cc9c057aec7012183bb566d831248501
 		(*drawObj).apply_surface( x, y, loading, screen,0);
 
 		x+= 30;
@@ -612,7 +538,6 @@ void carregarLoading(){
 int finalizeCenario1()
 {
 	(*cenario).finalize();
-<<<<<<< HEAD
 	delete(cenario);
 
 	while (!territorios.empty())
@@ -627,15 +552,6 @@ int finalizeCenario1()
 		delete( nacoes.front() );
 		nacoes.pop_front();
 	}
-=======
-		delete(cenario);
-
-	for(list<Nacao *>::iterator it = nacoes.begin(); it != nacoes.end(); it++)
-		delete(*it);
-
-	for(list<Territorio *>::iterator it = territorios.begin(); it != territorios.end(); it++)
-		delete(*it);
->>>>>>> 2bab34b0cc9c057aec7012183bb566d831248501
 
 	return 1;
 }
@@ -656,7 +572,6 @@ int	updateTime()
 
 int receiveNetworkMessages()
 {
-<<<<<<< HEAD
 	/*if ((*conexaoCliente).recebeJogada(nacaoInimigo)) {
 			return 1;	
 	}*/
@@ -706,52 +621,6 @@ void selecionarUnidadeNacao(Nacao* nacao, int tileX, int tileY)
 				(*audioHandler).playEffect_Enemy();
 				unidadeSelecionada = 0;					
 				unidadeAlvo = 0;	*/
-=======
-	if ((*conexaoCliente).recebeJogada(nacaoInimigo, nacaoSelecionada)) {
-			return 1;	
-	}
-	return 0;
-}
-
-void selecionarUnidadeNacao(Nacao* nacao, Nacao* nacaoInimigo, int tileX, int tileY)
-{
-		bool selecionei = false;
-		for(list<Unidade *>::iterator it1 = (*nacao).exercito.begin(); it1 != (*nacao).exercito.end(); it1++) 
-		{
-
-			if(tileX == (*(*it1)).posX && tileY == (*(*it1)).posY)
-			{
-				if ((*(*it1)).isDead == false)
-				{
-					if(unidadeSelecionada != NULL){
-						(*unidadeSelecionada).selecionado = false;
-					}
-					unidadeSelecionada = (*it1);
-					(*unidadeSelecionada).selecionado = true;
-					(*audioHandler).playEffect();
-					selecionei = true;	
-				}
-			}
-		}
-		if (!selecionei && unidadeSelecionada != NULL && (*nacaoSelecionada).energia > 1) // Tentando atacar ?
-		{
-			for(list<Unidade *>::iterator it1 = (*nacaoInimigo).exercito.begin(); it1 != (*nacaoInimigo).exercito.end(); it1++) 
-			{
-				if(tileX == (*(*it1)).posX && tileY == (*(*it1)).posY)
-				{
-					if ((*(*it1)).isDead == false)
-					{
-						(*unidadeSelecionada).selecionado = false;					
-						unidadeAlvo = (*it1);
-						(*unidadeSelecionada).attack(unidadeAlvo);
-						(*nacaoSelecionada).energia -= 2;
-						(*conexaoCliente).pushAtaque((*unidadeSelecionada).posX, (*unidadeSelecionada).posY, (*unidadeSelecionada).isDead, (*unidadeAlvo).posX, (*unidadeAlvo).posY, (*unidadeAlvo).isDead );
-						(*audioHandler).playEffect_Enemy();
-						unidadeSelecionada = 0;					
-						unidadeAlvo = 0;	
-					}
-				}
->>>>>>> 2bab34b0cc9c057aec7012183bb566d831248501
 			}
 		}
 }
@@ -765,7 +634,6 @@ void mostrandoUnidadesNacao(Nacao nacao)
 		(*(*it1)).show(); 
 	}
 }
-<<<<<<< HEAD
 		
 int get_inputs()
 {
@@ -836,74 +704,10 @@ int get_inputs()
 
 							/*if( event.key.keysym.sym == SDLK_a )
 							{
-=======
-
-		
-int get_inputs()
-{
-	while( SDL_PollEvent( &event ) )
-	{
-    if( event.type == SDL_QUIT )	//If the user has Xed out the window
-    {
-			quit = true;
-   	}
-		if( event.type == SDL_KEYDOWN )
-		{
-			if( event.key.keysym.sym == SDLK_ESCAPE ) 
-				quit = true;
-
-			if( event.key.keysym.sym == SDLK_p )
-				SDL_SaveBMP(screen, "screen_shot.bmp");
-			if (meuTurno && (*nacaoSelecionada).energia!=0)
-			{
-				if(unidadeSelecionada != 0)
-				{
-					if( (*unidadeSelecionada).qtdMovimentos > 0 )
-					{
-						int destX = (*unidadeSelecionada).posX;
-						int destY = (*unidadeSelecionada).posY;
-
-						if( event.key.keysym.sym == SDLK_a )
-						{
-							destX -= 1;
-						}
-						if( event.key.keysym.sym == SDLK_d )
-						{
-							destX += 1;
-						}
-						if( event.key.keysym.sym == SDLK_w )
-						{
-							destY -= 1;
-						}
-						if( event.key.keysym.sym == SDLK_s )
-						{
-							destY += 1;
-						}
-
-						if( ((*unidadeSelecionada).posX == destX) && ((*unidadeSelecionada).posY == destY) )	//se nao tiver escolhido nova posicao
-							break;
-						if( (destX < 0 || destX > COLUNAS_MAPA) || (destY < 0 || destY > LINHAS_MAPA) )			//limites do mapa
-							break;
-
-						/*
-						cout << "Pode Mover: " << (*unidadeSelecionada).canMove((*cenario).tiles[(*unidadeSelecionada).posX][(*unidadeSelecionada).posY]) << endl;
-						cout << "From tile to tileDestino: (" << (*unidadeSelecionada).posX << "," << (*unidadeSelecionada).posY << ") to (" << destX << "," << destY << ")" << endl;
-						cout << "Tipo do tile destino:" << (*(*cenario).tiles[destX][destY]).tipo << endl;
-						*/
-
-						if( (*unidadeSelecionada).canMove((*cenario).tiles[destX][destY]) )
-						{
-							(*(*cenario).tiles[(*unidadeSelecionada).posX][(*unidadeSelecionada).posY]).ocupante = NULL;
-
-							if( event.key.keysym.sym == SDLK_a )
-							{
-								(*nacaoSelecionada).energia--;
->>>>>>> 2bab34b0cc9c057aec7012183bb566d831248501
 								(*conexaoCliente).pushMovimento((*unidadeSelecionada).posX,(*unidadeSelecionada).posY,'a');
 							}
 							if( event.key.keysym.sym == SDLK_d )
 							{
-<<<<<<< HEAD
 								(*conexaoCliente).pushMovimento((*unidadeSelecionada).posX,(*unidadeSelecionada).posY,'d');
 							}
 							if( event.key.keysym.sym == SDLK_w ){
@@ -1006,132 +810,6 @@ int get_inputs()
 			}
 		
     }
-=======
-								(*nacaoSelecionada).energia--;
-								(*conexaoCliente).pushMovimento((*unidadeSelecionada).posX,(*unidadeSelecionada).posY,'d');
-							}
-							if( event.key.keysym.sym == SDLK_w ){
-								(*nacaoSelecionada).energia--;
-								(*conexaoCliente).pushMovimento((*unidadeSelecionada).posX,(*unidadeSelecionada).posY,'w');
-							}
-							if( event.key.keysym.sym == SDLK_s ){
-								(*nacaoSelecionada).energia--;
-								(*conexaoCliente).pushMovimento((*unidadeSelecionada).posX,(*unidadeSelecionada).posY,'s');
-							}
-							
-							(*unidadeSelecionada).posX = destX;
-							(*unidadeSelecionada).posY = destY;
-							
-							(*(*cenario).tiles[destX][destY]).ocupante = unidadeSelecionada;
-							(*unidadeSelecionada).qtdMovimentos--;
-
-							if( (*(*cenario).tiles[destX][destY]).territorio != NULL)
-							{
-								if( (*(*(*cenario).tiles[destX][destY]).territorio).tiles.front() == (*cenario).tiles[destX][destY] && (*unidadeSelecionada).nacao != (*(*(*cenario).tiles[destX][destY]).territorio).nacao )
-									(*(*(*cenario).tiles[destX][destY]).territorio).serConquistado((*unidadeSelecionada).nacao);
-							}
-						}
-						else if( (*unidadeSelecionada).isDead )
-						{
-							(*(*cenario).tiles[(*unidadeSelecionada).posX][(*unidadeSelecionada).posY]).ocupante = NULL;
-							unidadeSelecionada = NULL;
-						}
-					}
-				}
-
-				//alternando modo do mapa
-				if(event.key.keysym.sym == SDLK_0)
-				{
-					modo++;
-					modo = modo % 4;		//4 modos
-				}
-					
-				if(event.key.keysym.sym == SDLK_8)
-				{
-					for(list<Unidade *>::iterator it1 = (*nacoes.back()).exercito.begin(); it1 != (*nacoes.back()).exercito.end(); it1++)
-					{
-						if((*(*it1)).tipo == SOLDADO)
-						(*(*it1)).qtdMovimentos = 5; 
-
-						else if((*(*it1)).tipo == NAVIO)
-						(*(*it1)).qtdMovimentos = 3; 
-						
-						else if((*(*it1)).tipo == AVIAO)
-						(*(*it1)).qtdMovimentos = 10; 
-
-						else if((*(*it1)).tipo == CANHAO)
-						(*(*it1)).qtdMovimentos = 5; 	
-					}
-
-					nacaoSelecionada = nacoes.front();
-				}
-
-				if(event.key.keysym.sym == SDLK_9)
-				{
-					for(list<Unidade *>::iterator it1 = (*nacoes.front()).exercito.begin(); it1 != (*nacoes.front()).exercito.end(); it1++)
-					{
-						if((*(*it1)).tipo == SOLDADO)
-						(*(*it1)).qtdMovimentos = 5; 
-
-						if((*(*it1)).tipo == NAVIO)
-						(*(*it1)).qtdMovimentos = 3; 
-									
-						if((*(*it1)).tipo == AVIAO)
-						(*(*it1)).qtdMovimentos = 10; 
-
-						if((*(*it1)).tipo == CANHAO)
-						(*(*it1)).qtdMovimentos = 5;
-					}
-					nacaoSelecionada = nacoes.back();
-				}
-
-				int posXBase = (*(*(*nacaoSelecionada).territorios.front()).tiles.front()).posX;
-				int posYBase = (*(*(*nacaoSelecionada).territorios.front()).tiles.front()).posY;
-				
-				if(event.key.keysym.sym == SDLK_1)
-					(*nacaoSelecionada).exercitoAdd(new Unidade(posXBase,posYBase,SOLDADO,10,nacaoSelecionada,3,TERRESTRE));
-
-				if(event.key.keysym.sym == SDLK_2)
-				{
-					//Base Marinha sendo o segundo tile do territorio ou ver uma posicao a direita/esquerda que seja agua
-					posXBase = 1;
-					posYBase = 1;
-
-					(*nacaoSelecionada).exercitoAdd(new Unidade(posXBase,posYBase,NAVIO,10,nacaoSelecionada,5,AQUATICO));
-					//mostrandoUnidadesNacao((*nacaoSelecionada));
-				}
-
-				if(event.key.keysym.sym == SDLK_3)
-					(*nacaoSelecionada).exercitoAdd(new Unidade(posXBase,posYBase,CANHAO,10,nacaoSelecionada,2,TERRESTRE));
-
-				if(event.key.keysym.sym == SDLK_4)
-					(*nacaoSelecionada).exercitoAdd(new Unidade(posXBase,posYBase,AVIAO,10,nacaoSelecionada,10,QUALQUER_AMBIENTE));
-			}			
-		}
-		
-		// Eventos de mouse
-		if(event.type == SDL_MOUSEBUTTONUP && meuTurno)
-		{
-			int X = event.button.x;
-			int Y = event.button.y;
-
-			int tileX = X/30;
-			int tileY = Y/30;
-
-			//unidadeSelecionada
-			if(nacaoSelecionada != 0 || unidadeSelecionada != 0)
-				selecionarUnidadeNacao(nacaoSelecionada, nacaoInimigo, tileX, tileY);
-
-		}
-		
-  }
-
-  // Verifica se é hora de passar o turno
-  if ( meuTurno && !(*nacaoSelecionada).energia) {
-  	meuTurno = false;
-  	(*conexaoCliente).pushTurno();
-  }
->>>>>>> 2bab34b0cc9c057aec7012183bb566d831248501
 
 	return 1;
 }
@@ -1192,18 +870,12 @@ int do_logic()
 
 int do_drawing()
 {
-<<<<<<< HEAD
 	if(scenarioAtual!=INICIO)
 		carregarLoading();
 	//comecando do inicio do jogo
 	scenarioAtual=INICIO;
 	//Telas de apresentacao
 
-=======
-	//comecando do inicio do jogo
-	//scenarioAtual=INICIO;
-	//Telas de apresentacao
->>>>>>> 2bab34b0cc9c057aec7012183bb566d831248501
 	if(scenarioAtual==TELA_INICIAL)
 	{
 		switch(quadroEstado)			//switch para diferenciar parte da animacao por quadro
@@ -1415,29 +1087,19 @@ int do_drawing()
 	//Inicio do jogo
 	if(scenarioAtual==INICIO)
 	{
-<<<<<<< HEAD
 
 		cout << "jah entrou" << endl;
-=======
->>>>>>> 2bab34b0cc9c057aec7012183bb566d831248501
 		//limpando tela anterior colocando a cor branca no lugar
 		SDL_FillRect(screen, NULL, 0xFFFFFF);	
 
 		//desenhando mapa de bits de acordo ao modo
-<<<<<<< HEAD
 		if(modo == MODO_NORMAL) 
 		{
 			(*drawObj).apply_surface( height, width, mapa, screen,0);
-=======
-		if(modo == MODO_NORMAL) {
-			(*drawObj).apply_surface( height, width, mapa, screen,0);
-
->>>>>>> 2bab34b0cc9c057aec7012183bb566d831248501
 			for(int i = 0; i < (*cenario).numeroTilesY; i++)
 			{
 				for(int j = 0; j < (*cenario).numeroTilesX; j++)
 				{								
-<<<<<<< HEAD
 					(*(*cenario).tiles[i][j]).show(false);
 				}
 			}
@@ -1449,30 +1111,6 @@ int do_drawing()
 				for(int j = 0; j < (*cenario).numeroTilesX; j++)
 				{								
 					(*(*cenario).tiles[i][j]).show(true);
-=======
-					(*(*cenario).tiles[i][j]).show();
-				}
-			}
-		}
-		
-		else{
-			for(int i = 0; i < (*cenario).numeroTilesY; i++)
-			{
-				for(int j = 0; j < (*cenario).numeroTilesX; j++)
-				{
-					rect.x = j*30;
-					rect.y = i*30;
-					rect.w = 30;
-					rect.h = 30;
-				
-					switch(modo)
-					{
-					 		case MODO_QUADRADOS_PREENCHIDOS:
-								SDL_FillRect(screen, &rect, cores[(*cenario).tiles[i][j] -> tipo]);
-							break;
-
-					}
->>>>>>> 2bab34b0cc9c057aec7012183bb566d831248501
 				}
 			}
 		}
@@ -1489,19 +1127,14 @@ int do_drawing()
 		{
 			mostrandoUnidadesNacao(*(*it));
 		}
-<<<<<<< HEAD
 		if(unidadeSelecionada != NULL)
 			(*unidadeSelecionada).show();
-=======
-
->>>>>>> 2bab34b0cc9c057aec7012183bb566d831248501
 
 		(*nacaoSelecionada).carregaScore();
 
 		(*drawObj).apply_surface( height, width + 0*40, messageRecursos, screen, 0 );
 		(*drawObj).apply_surface( height, width + 1*40, messageUnidades, screen, 0 );	
 		(*drawObj).apply_surface( height, width + 2*40, messageTerritorios, screen, 0 );	
-<<<<<<< HEAD
 
 		SDL_Color textColor = {255, 255, 255, 255};
 		string auxGeneralInfo = "";
@@ -1515,10 +1148,6 @@ int do_drawing()
 		sprintf(scoreGeneralInfo,"Tempo Restante %d %s", tempo, auxGeneralInfo.c_str() );
 		messageGeneralInfo = TTF_RenderText_Solid( (*fontHandler).font, scoreGeneralInfo, textColor );
 		(*drawObj).apply_surface( height+2*260, width + 3*40, messageGeneralInfo, screen, 0 );
-=======
-		(*drawObj).apply_surface( height + 500, width + 2*40, messageEnergia, screen, 0 );	
-
->>>>>>> 2bab34b0cc9c057aec7012183bb566d831248501
 
 		gameOver = confereGameOver();
 
@@ -1529,7 +1158,6 @@ int do_drawing()
 			messageGameOver = TTF_RenderText_Solid( (*fontHandler).font, scoreGameOver, textColor );
 			(*drawObj).apply_surface( height, width + 4*40, messageGameOver, screen, 0 );
 		}
-<<<<<<< HEAD
 		else if ( territorioSelecionado != NULL )
 		{
 			string dominante = "Ninguem";
@@ -1549,8 +1177,6 @@ int do_drawing()
 			messageGameOver = TTF_RenderText_Solid( (*fontHandler).font, scoreGameOver, textColor );
 			(*drawObj).apply_surface( height, width + 3*40, messageGameOver, screen, 0 );
 		}
-=======
->>>>>>> 2bab34b0cc9c057aec7012183bb566d831248501
 	}
 		
 
@@ -1566,7 +1192,6 @@ int do_drawing()
 		finalizeCenario1();
 		scenarioAtual = MENU_INICIAL;
 		SDL_Delay( 5000 );
-<<<<<<< HEAD
 		cout << "saiu" << endl;
 	}
 
@@ -1587,11 +1212,6 @@ int do_drawing()
 	}
 	else
 		gameOver = confereGameOver();
-=======
-	}
-
-    frame++;
->>>>>>> 2bab34b0cc9c057aec7012183bb566d831248501
 
     //If a second has passed since the caption was last updated
 	if( (*timer).get_ticks() < 1000 / FRAMES_PER_SECOND )
@@ -1606,7 +1226,6 @@ int do_drawing()
 //diferentes cenarios
 int initializeCenario1()
 {
-<<<<<<< HEAD
 	nivelHost = 1;
 	unidadeSelecionada = NULL;
 	territorioSelecionado = NULL;
@@ -1641,14 +1260,6 @@ int initializeCenario1()
 
 	territorios.push_back(new Territorio("EUA"));
 	territorios.push_back(new Territorio("Siria"));
-=======
-	gameOver = false;
-
-	(*audioHandler).playMusic();
-
-	territorios.push_back(new Territorio());
-	territorios.push_back(new Territorio());
->>>>>>> 2bab34b0cc9c057aec7012183bb566d831248501
 
 	int i = 0;
 	for(list<Territorio *>::iterator it = territorios.begin(); i < 2 && it != territorios.end(); it++, i++)
@@ -1667,7 +1278,6 @@ int initializeCenario1()
 
 	//criando a variavel auxiliar apenas para aproveitar esta forma de declaracao de array com chaves, carregar de arquivo depois
 	int auxMapaMundi[LINHAS_MAPA][COLUNAS_MAPA] = 
-<<<<<<< HEAD
 			   {{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 2, 3, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 				{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 				{0, 0, 1, 1, 1, 1, 1, 1, 1, 5, 0, 0, 0, 0, 5, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
@@ -1692,32 +1302,6 @@ int initializeCenario1()
 				{0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 				{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0},
 				{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 2, 3, 1, 1, 1, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}};
-=======
-			 {{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 1, 2, 3, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-				{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-				{0, 0, 4, 4, 4, 4, 4, 4, 4, 5, 0, 0, 0, 0, 5, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-				{0, 0, 4, 1, 1, 1, 1, 1, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0},
-				{0, 0, 4, 1, 1, 3, 1, 2, 4, 0, 5, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0},
-				{0, 0, 4, 1, 1, 3, 1, 2, 4, 0, 0, 0, 0, 0, 0, 0, 0, 4, 1, 1, 2, 3, 1, 1, 1, 1, 1, 1, 1, 1, 4, 0, 0},
-				{0, 0, 4, 1, 6, 1, 1, 1, 4, 0, 0, 0, 0, 0, 0, 0, 4, 0, 4, 1, 1, 3, 1, 1, 1, 1, 1, 1, 1, 1, 4, 0, 0},
-				{0, 0, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 5, 4, 3, 4, 0, 4, 4, 4, 4, 4, 4, 2, 1, 1, 3, 1, 4, 5, 0},
-				{0, 0, 0, 0, 4, 1, 4, 5, 0, 0, 0, 0, 0, 0, 0, 4, 2, 4, 0, 0, 0, 0, 0, 0, 4, 1, 1, 2, 3, 1, 4, 0, 0},
-				{0, 0, 0, 0, 0, 4, 1, 4, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 4, 1, 4, 4, 1, 1, 1, 4, 0, 0},
-				{0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 1, 4, 0, 4, 1, 2, 1, 4, 0, 0},
-				{0, 0, 0, 0, 0, 4, 1, 1, 2, 6, 1, 1, 4, 0, 0, 0, 4, 4, 4, 4, 4, 4, 1, 4, 0, 0, 4, 1, 6, 4, 0, 0, 0},
-				{0, 0, 0, 5, 0, 4, 1, 1, 2, 2, 1, 1, 4, 0, 0, 0, 4, 6, 3, 1, 1, 1, 4, 0, 0, 0, 4, 1, 4, 0, 4, 0, 0},
-				{0, 0, 0, 0, 4, 1, 1, 1, 1, 1, 1, 4, 0, 0, 0, 0, 0, 4, 4, 4, 3, 6, 4, 0, 0, 5, 0, 4, 0, 4, 6, 4, 0},
-				{0, 0, 0, 0, 0, 4, 6, 1, 3, 1, 1, 4, 0, 0, 0, 0, 0, 0, 0, 4, 2, 2, 4, 0, 0, 0, 0, 0, 0, 4, 3, 4, 5},
-				{0, 0, 0, 0, 0, 0, 4, 1, 1, 1, 1, 4, 0, 0, 0, 0, 0, 0, 4, 1, 1, 1, 4, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0},
-				{0, 0, 0, 0, 5, 0, 4, 1, 1, 3, 4, 0, 0, 0, 0, 0, 0, 0, 0, 4, 1, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-				{0, 0, 0, 0, 0, 0, 0, 4, 1, 1, 4, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 0},
-				{0, 0, 0, 0, 0, 0, 0, 0, 4, 1, 4, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 5, 0, 4, 1, 2, 6, 4, 0},
-				{0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 4, 1, 2, 3, 4, 0},
-				{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 0},
-				{0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-				{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0},
-				{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 1, 2, 3, 1, 1, 1, 2, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}};
->>>>>>> 2bab34b0cc9c057aec7012183bb566d831248501
 	
 	for(int i = 0; i<LINHAS_MAPA; i++)
 	{
@@ -1766,7 +1350,6 @@ int initializeCenario1()
 		}
 	}
 
-<<<<<<< HEAD
 	territorios.push_back(new Territorio("Canada"));
 	(*territorios.back()).addTile((*cenario).tiles[4][7]);
 
@@ -1779,18 +1362,6 @@ int initializeCenario1()
 	(*nacoes.back()).exercitoAdd(canhao,NULL,18,18);
 	(*nacoes.back()).exercitoAdd(navio,NULL,20,18);
 	(*nacoes.back()).exercitoAdd(aviao,NULL,22,18);
-=======
-
-	(*nacoes.front()).exercitoAdd(new Unidade(3,3,SOLDADO,10,nacoes.front(),5,TERRESTRE));
-	(*nacoes.front()).exercitoAdd(new Unidade(5,2,NAVIO,10,nacoes.front(),3,AQUATICO));	
-	(*nacoes.front()).exercitoAdd(new Unidade(6,7,AVIAO,10,nacoes.front(),10,QUALQUER_AMBIENTE));	
-	(*nacoes.front()).exercitoAdd(new Unidade(4,5,CANHAO,10,nacoes.front(),5,TERRESTRE));
-
-	(*nacoes.back()).exercitoAdd(new Unidade(24,16,SOLDADO,10,nacoes.back(),5,TERRESTRE));
-	(*nacoes.back()).exercitoAdd(new Unidade(20,18,NAVIO,10,nacoes.back(),3,AQUATICO));	
-	(*nacoes.back()).exercitoAdd(new Unidade(22,18,AVIAO,10,nacoes.back(),10,QUALQUER_AMBIENTE));	
-	(*nacoes.back()).exercitoAdd(new Unidade(18,18,CANHAO,10,nacoes.back(),5,TERRESTRE));	
->>>>>>> 2bab34b0cc9c057aec7012183bb566d831248501
 
 	return 1;
 }
@@ -1798,15 +1369,9 @@ int initializeCenario1()
 
 int sendNetworkMessages()
 {
-<<<<<<< HEAD
 	/*if ((*conexaoCliente).enviaJogada()) {
 			return 1;	
 	}*/
-=======
-	if ((*conexaoCliente).enviaJogada()) {
-			return 1;	
-	}
->>>>>>> 2bab34b0cc9c057aec7012183bb566d831248501
 	return 0;
 }
 

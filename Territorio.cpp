@@ -1,5 +1,4 @@
 #include "Territorio.h"
-<<<<<<< HEAD
 #include "Tile.h"
 
 Territorio::Territorio(string _nome)
@@ -7,17 +6,10 @@ Territorio::Territorio(string _nome)
 	nome = _nome;
 	nacao = NULL;
 	pontosProducao = 0;
-=======
-
-Territorio::Territorio()
-{
-  nacao = NULL;
->>>>>>> 2bab34b0cc9c057aec7012183bb566d831248501
 }
 
 void Territorio::coletar()
 {
-<<<<<<< HEAD
 	int petroleo = 5, ferro = 5, ouro = 5, madeira = 5;
 	int bonusBase = 5, bonusEspecial = 15;
 
@@ -57,50 +49,10 @@ void Territorio::coletar()
 	(*nacao).ferro += ferro;
 	(*nacao).ouro += ouro;
 	(*nacao).madeira += madeira;
-=======
-  int petroleo = 5, ferro = 5, ouro = 5, madeira = 5;
-  int bonusBase = 5, bonusEspecial = 15;
-
-  //iterar todos e ir acumulando para a nacao
-  for(list<Tile *>::iterator it = tiles.begin(); it != tiles.end(); it++)
-  {
-    switch( (*(*it)).tipo )
-    {
-      case OCEANO:      //agua
-        petroleo += bonusBase;
-        ouro += bonusBase;
-        break;
-      case TERRA:       //terra
-        ferro += bonusBase;
-        madeira += bonusBase;
-        break;
-      case FLORESTA:      //arvore
-        madeira += bonusEspecial;
-        break;
-      case MINA_OURO:     //ouro
-        ouro += bonusEspecial;
-        break;
-      case PETROLEO:      //petroleo
-        petroleo += bonusEspecial;
-        break;
-      case MINA_FERRO:    //ferro
-        ferro += bonusEspecial;
-        break;
-      default:        //capital dah mais recursos?
-        break;        
-    }
-  }
-
-  (*nacao).petroleo += petroleo;
-  (*nacao).ferro += ferro;
-  (*nacao).ouro += ouro;
-  (*nacao).madeira += madeira;
->>>>>>> 2bab34b0cc9c057aec7012183bb566d831248501
 }
 
 void Territorio::serConquistado(Nacao* _nacao)
 {
-<<<<<<< HEAD
 	if(nacao != NULL)
 	{
 		for(list<Territorio *>::iterator it = (*nacao).territorios.begin(); it != (*nacao).territorios.end(); it++)
@@ -116,10 +68,6 @@ void Territorio::serConquistado(Nacao* _nacao)
 
   	nacao = _nacao;
   	(*nacao).territorios.push_back(this);
-=======
-  nacao = _nacao;
-  (*nacao).territorios.push_back(this);
->>>>>>> 2bab34b0cc9c057aec7012183bb566d831248501
 }
 
 void Territorio::addTile(Tile* tile)
@@ -133,7 +81,6 @@ void Territorio::mostrarCapital()
   (*tiles.front()).showCapital();
 }
 
-<<<<<<< HEAD
 void Territorio::criarUnidade(ClasseUnidade* classeUnidade)
 {
 	if(nacao == NULL)
@@ -148,5 +95,3 @@ void Territorio::criarUnidade(ClasseUnidade* classeUnidade)
 }
 
 
-=======
->>>>>>> 2bab34b0cc9c057aec7012183bb566d831248501

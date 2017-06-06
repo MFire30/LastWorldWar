@@ -192,7 +192,6 @@ int Draw::apply_surface( int x, int y, SDL_Surface* source, SDL_Surface* destina
     //Colagem da SDL_Surface na screen, com Blit
     return SDL_BlitSurface( source, clip, destination, &offset );
 }
-<<<<<<< HEAD
 
 SDL_Surface* Draw::CreateSurface(Uint32 flags,int width,int height,const SDL_Surface* display)
 {
@@ -211,5 +210,3 @@ SDL_Surface* Draw::MyFillRect(int width, int height, const SDL_Surface* display,
 	return surface;
 }
 
-=======
->>>>>>> 2bab34b0cc9c057aec7012183bb566d831248501

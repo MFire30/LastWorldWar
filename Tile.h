@@ -19,11 +19,7 @@ class Tile
     Territorio* territorio;
 
 		Tile(int _posX, int _posY, int _tipo);
-<<<<<<< HEAD
 		void show(bool);
-=======
-		void show();
->>>>>>> 2bab34b0cc9c057aec7012183bb566d831248501
     void showCapital();
 };
 
