@@ -4,11 +4,6 @@ cmake_minimum_required(VERSION 3.8)
 # Project's name
 project(LastWorldWar)
 
-# Set the output folder where your program will be created
-set(CMAKE_BINARY_DIR ${CMAKE_SOURCE_DIR}/build)
-set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR})
-set(LIBRARY_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/build)
-
 # Set the libraries - Must have
 find_package(SDL REQUIRED)
 find_package(SDL_image REQUIRED)
@@ -40,3 +35,26 @@ INSTALL(TARGETS LastWorldWar DESTINATION LastWorldWar_GAME)
 INSTALL(TARGETS LastWorldWarServer DESTINATION LastWorldWar_GAME)
 INSTALL(FILES build/lazy.ttf build/mapaTeste.tmx DESTINATION LastWorldWar_GAME)
 INSTALL(DIRECTORY build/images build/sound_effects build/soundtrack DESTINATION LastWorldWar_GAME)
+
+
+
+# SECTION - Packaging for Debian systems
+## Needed for .deb generation
+SET(CPACK_GENERATOR "DEB")
+SET(CPACK_DEBIAN_PACKAGE_MAINTAINER "FgaGameDev <https://github.com/fgagamedev/LastWorldWar>")
+
+## Setting dependences - Auto Discovery
+set(CPACK_DEBIAN_PACKAGE_SHLIBDEPS ON)
+
+## Installation info
+set(CPACK_PACKAGING_INSTALL_PREFIX /usr/local/)
+
+## Adding info
+set(CPACK_PACKAGE_CONTACT "https://github.com/fgagamedev/LastWorldWar")
+set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "LastWorldWar game, from UnB-FGA students.")
+set(CPACK_PACKAGE_VERSION_MAJOR "1")
+set(CPACK_PACKAGE_VERSION_MINOR "0")
+set(CPACK_PACKAGE_VERSION_PATCH "0")
+
+## This should be the last item on this file
+include(CPack)
